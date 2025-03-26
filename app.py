@@ -24,29 +24,54 @@ try:
 except FileNotFoundError:
     sentences_data = []
 class teacher:
-    def __init__(self, key, word):
-        self.key = key
-        self.word = word
-    def sentence(self, words):
-        self.word.append(words)
-        return(self.word)
+    def __init__(self, math, language):
+        self.language = language
+        self.math = math
+    def sentence(self, maths):
+        self.math.append(maths)
+        return(self.math)
     def to_dict(self):
-        return{"key": self.key, "word": self.word}
-"""         part_list_AD = self.word[:1]
+        return{"language": self.language, "math": self.math}
+"""         part_list_AD = self.math[:1]
         return part_list_AD
 AD = teacher("AD", ["very good", "not bad", "very bad"])
 print(AD.sentence("")) """ 
 
 teachers = [
-    teacher("very good", "to russian"),
-    teacher("not bad", "to russian"),
-    teacher("very bad", "to russian")
+    teacher("what is 5 * 2", "math"),       #FOR TOMORROW: PUT THE ANSWER AFTER "MATH"
+    teacher("what is 15 - 3", "math"),
+    teacher("what is 99 % 9", "math")
 ]
 
 sentences_data = [teacher.to_dict() for teacher in teachers]
-with open("teachers.json", "w") as file:
+with open("teach.json", "w") as file:
     json.dump(sentences_data, file, indent = 4)
-new_flash = teacher("")
+new_math = teacher("what is 48 + 56", "math")
+sentences_data.append(new_math.to_dict())
+
+with open("teach.json", "w") as file:
+    json.dump(sentences_data, file, indent = 4)
+
+class student:
+    def __init__(self, answer):
+        self.answer = answer
+    def calculate_sum(self, a, b):
+        return a + b
+    def calculate_subtract(self, a, b):
+        return a - b
+    def calculate_multiply(self, a, b):
+        return a * b
+    def calculate_divide(self, a, b):
+        if b > 0:
+            return a % b
+        else:
+            return("impossible problem")
+
+with open("teach.json", "r") as file:
+    flashcards = file.read()
+    print(flashcards)
+
+
 
 """ #LESSON ON CLASS
 class Merchant:

@@ -1,0 +1,18 @@
+[
+    {
+        "language": "math",
+        "math": "what is 5 * 2"
+    },
+    {
+        "language": "math",
+        "math": "what is 15 - 3"
+    },
+    {
+        "language": "math",
+        "math": "what is 99 % 9"
+    },
+    {
+        "language": "math",
+        "math": "what is 48 + 56"
+    }
+]
