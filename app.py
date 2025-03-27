@@ -68,8 +68,16 @@ class student:
             return("impossible problem")
 
 with open("teach.json", "r") as file:
-    flashcards = file.read()
-    print(flashcards)
+    cards = open("./teach.json", encoding="utf8")   #stole from movie database
+    flashcards = json.load(cards)
+    
+for card in flashcards:
+    
+    print(f"{card['math']}")
+
+
+
+
 
 
 
