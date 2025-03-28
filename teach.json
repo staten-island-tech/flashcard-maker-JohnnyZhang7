@@ -1,18 +1,22 @@
 [
     {
         "language": "math",
-        "math": "what is 5 * 2"
+        "math": "what is 5 * 2",
+        "answer": "10"
     },
     {
         "language": "math",
-        "math": "what is 15 - 3"
+        "math": "what is 15 - 3",
+        "answer": "12"
     },
     {
         "language": "math",
-        "math": "what is 99 % 9"
+        "math": "what is 99 % 9",
+        "answer": "11"
     },
     {
         "language": "math",
-        "math": "what is 48 + 56"
+        "math": "what is 48 + 56",
+        "answer": "104"
     }
 ]

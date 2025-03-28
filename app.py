@@ -24,59 +24,56 @@ try:
 except FileNotFoundError:
     sentences_data = []
 class teacher:
-    def __init__(self, math, language):
+    def __init__(self, math, language, answer):
         self.language = language
         self.math = math
-    def sentence(self, maths):
+        self.answer = answer
+    def equation(self, maths):
         self.math.append(maths)
         return(self.math)
     def to_dict(self):
-        return{"language": self.language, "math": self.math}
-"""         part_list_AD = self.math[:1]
-        return part_list_AD
-AD = teacher("AD", ["very good", "not bad", "very bad"])
-print(AD.sentence("")) """ 
+        return{"language": self.language, "math": self.math, "answer": self.answer}
 
 teachers = [
-    teacher("what is 5 * 2", "math"),       #FOR TOMORROW: PUT THE ANSWER AFTER "MATH"
-    teacher("what is 15 - 3", "math"),
-    teacher("what is 99 % 9", "math")
+    teacher("what is 5 * 2", "math", "10"),
+    teacher("what is 15 - 3", "math", "12"),
+    teacher("what is 99 % 9", "math", "11")
 ]
 
 sentences_data = [teacher.to_dict() for teacher in teachers]
 with open("teach.json", "w") as file:
     json.dump(sentences_data, file, indent = 4)
-new_math = teacher("what is 48 + 56", "math")
+new_math = teacher("what is 48 + 56", "math", "104")
 sentences_data.append(new_math.to_dict())
 
 with open("teach.json", "w") as file:
     json.dump(sentences_data, file, indent = 4)
 
 class student:
-    def __init__(self, answer):
+    def __init__(self, answer, streak):
         self.answer = answer
-    def calculate_sum(self, a, b):
-        return a + b
-    def calculate_subtract(self, a, b):
-        return a - b
-    def calculate_multiply(self, a, b):
-        return a * b
-    def calculate_divide(self, a, b):
-        if b > 0:
-            return a % b
-        else:
-            return("impossible problem")
+        self.streak = streak
+        self.current_streak = 0
+        self.reset_streak = 0
+    def streak_streak(self, streaks):
+        self.current_streak += 1
+        self.streaks = streaks
+    def to_dict(self):
+        return {"answer": self.answer, "streak": self.streak}
 
 with open("teach.json", "r") as file:
     cards = open("./teach.json", encoding="utf8")   #stole from movie database
     flashcards = json.load(cards)
     
+
 for card in flashcards:
-    
-    print(f"{card['math']}")
-
-
-
+    question_list = input(f"question: {card['math']} ")
+    correct_answer = card['answer']
+    if question_list == card['answer']:
+        print("correct")
+        student.streak_streak(streaks, card['current_streak'])
+    else:
+        print("incorrect")
 
 
 
