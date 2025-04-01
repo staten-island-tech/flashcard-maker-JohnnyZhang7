@@ -55,26 +55,26 @@ class student:
         self.streak = streak
         self.current_streak = 0
         self.reset_streak = 0
-    def streak_streak(self, streaks):
-        self.current_streak += 1
+    def streak_streak(self, streaks, points):
+        self.points = points
         self.streaks = streaks
+        self.points += 1
+        self.current_streak += 1
     def to_dict(self):
-        return {"answer": self.answer, "streak": self.streak}
+        return {"answer": self.answer, "streak": self.streak, "current_streak": self.current_streak}
 
 with open("teach.json", "r") as file:
     cards = open("./teach.json", encoding="utf8")   #stole from movie database
     flashcards = json.load(cards)
     
-
 for card in flashcards:
     question_list = input(f"question: {card['math']} ")
-    correct_answer = card['answer']
     if question_list == card['answer']:
         print("correct")
-        student.streak_streak(streaks, card['current_streak'])
+    Johnny = student("Johnny", ["points", "streaks"])
+        print(Johnny.current_streak)
     else:
         print("incorrect")
-
 
 
 
@@ -90,3 +90,4 @@ Rachel = Merchant("Rachel", ["Apples", "Oranges", "Human"])
 Kammy = Merchant("Kammy", ["Penguins", "Whales", "Capybaras"])
 print(Rachel.sell("Human"))
 print(Kammy.sell("Capybaras")) """
+
