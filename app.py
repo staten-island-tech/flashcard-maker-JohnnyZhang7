@@ -19,11 +19,11 @@ print(my_car.display_info())  # Output: 2023 Toyota Camry """
 
 import json
 import random
-try:
+""" try:
     with open("teach.json", "r") as file:
         sentences_data = json.load(file)
 except FileNotFoundError:
-    sentences_data = []
+    sentences_data = [] """
 class teacher:
     def __init__(self, subject, language, answer):
         self.language = language
@@ -35,8 +35,83 @@ class teacher:
     def to_dict(self):
         return{"language": self.language, "subject": self.subject, "answer": self.answer}
 
-teachers = [
-    teacher("what is 5 * 2", "subject", "10"),
+teachers = []
+random.shuffle(teachers)
+
+sentences_data = [teacher.to_dict() for teacher in teachers]
+with open("teach.json", "w") as file:
+    json.dump(sentences_data, file, indent = 4)
+new_subject = input(teacher("what is 48 + 56", "subject", "104"))
+sentences_data.append(new_subject.to_dict())
+
+with open("teach.json", "w") as file:
+    json.dump(sentences_data, file, indent = 4)
+
+class student:
+    def __init__(self, name):
+        self.name = name
+        self.current_streak = 0
+        self.points = 0
+    def co_streak(self):
+        self.current_streak += 1
+    def i_streak(self):
+        self.current_streak = 0
+    def total_points(self):
+        self.points += 1
+    def to_dict(self):
+        return {"current_streak": self.current_streak, "points": self.points}
+
+with open("teach.json", "r") as file:
+    cards = open("./teach.json", encoding="utf8")   #stole from movie database
+    flashcards = json.load(cards)
+    
+Johnny = student("Johnny")
+for card in flashcards:
+    question_list = input(f"question: {card['subject']}")
+    if question_list == card['answer']:
+        print("correct")
+        Johnny.co_streak()
+        if Johnny.current_streak in range(0, 4):
+            Johnny.total_points()
+        elif Johnny.current_streak in range(4, 7):
+            Johnny.total_points()
+            Johnny.total_points()
+        elif Johnny.current_streak in range(7, 11):
+            for i in range(3):
+                Johnny.total_points()
+        elif Johnny.current_streak in range(11, 21):
+            for i in range(4):
+                Johnny.total_points()
+        elif Johnny.current_streak in range(21, 31):
+            for i in range(5):
+                Johnny.total_points()
+        elif Johnny.current_streak in range(31, 51):
+            for i in range(6):
+                Johnny.total_points()
+
+
+    else:
+        print("incorrect, your streak has been reset")
+        Johnny.i_streak()
+        print(f"The answer was: {card['answer']}")
+    print(f"Your current streak is {Johnny.current_streak}")
+    print(f"Your total points are {Johnny.points}")
+
+
+""" #LESSON ON CLASS
+class Merchant:
+     def __init__(self, name, products):
+        self.name = name
+        self.products = products
+     def sell(self, item):
+         self.products.remove(item)
+         print(self.products)
+Rachel = Merchant("Rachel", ["Apples", "Oranges", "Human"])
+Kammy = Merchant("Kammy", ["Penguins", "Whales", "Capybaras"])
+print(Rachel.sell("Human"))
+print(Kammy.sell("Capybaras")) """
+
+"""     teacher("what is 5 * 2", "subject", "10"),
     teacher("what is 15 - 3", "subject", "12"),
     teacher("what is 7 + 8", "subject", "15"),
     teacher("what is 25 * 4", "subject", "100"),
@@ -71,58 +146,4 @@ teachers = [
     teacher("What is the name of the imaginary line that divides the Earth into the Northern and Southern Hemispheres?", "subject", "Equator"),
     teacher("Which country is known as the Land of the Rising Sun?", "subject", "Japan"),
     teacher("What is the capital city of Russia?", "subject", "Moscow"),
-    teacher("Which sea is the largest inland body of water?", "subject", "Caspian Sea"),
-]
-random.shuffle(teachers)
-
-sentences_data = [teacher.to_dict() for teacher in teachers]
-with open("teach.json", "w") as file:
-    json.dump(sentences_data, file, indent = 4)
-new_subject = teacher("what is 48 + 56", "subject", "104")
-sentences_data.append(new_subject.to_dict())
-
-with open("teach.json", "w") as file:
-    json.dump(sentences_data, file, indent = 4)
-
-class student:
-    def __init__(self, name):
-        self.name = name
-        self.current_streak = 0
-    def co_streak(self):
-        self.current_streak += 1
-    def i_streak(self):
-        self.current_streak = 0
-    def to_dict(self):
-        return {"current_streak": self.current_streak}
-
-with open("teach.json", "r") as file:
-    cards = open("./teach.json", encoding="utf8")   #stole from movie database
-    flashcards = json.load(cards)
-    
-Johnny = student("Johnny")
-for card in flashcards:
-    question_list = input(f"question: {card['subject']} ")
-    if question_list == card['answer']:
-        print("correct")
-        Johnny.co_streak()
-    else:
-        print("incorrect, your streak has been reset")
-        Johnny.i_streak()
-        print(f"The answer was: {card['answer']}")
-    print(f"Your current streak is {Johnny.current_streak}")
-
-
-
-""" #LESSON ON CLASS
-class Merchant:
-     def __init__(self, name, products):
-        self.name = name
-        self.products = products
-     def sell(self, item):
-         self.products.remove(item)
-         print(self.products)
-Rachel = Merchant("Rachel", ["Apples", "Oranges", "Human"])
-Kammy = Merchant("Kammy", ["Penguins", "Whales", "Capybaras"])
-print(Rachel.sell("Human"))
-print(Kammy.sell("Capybaras")) """
-
+    teacher("Which sea is the largest inland body of water?", "subject", "Caspian Sea"), """
