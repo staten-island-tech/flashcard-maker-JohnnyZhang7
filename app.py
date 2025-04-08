@@ -35,12 +35,12 @@ class teacher:
         return{"question": self.question, "answer": self.answer}
 
 teachers = []
-       #teacher("what is 5 * 2", "10")
 while True:
-    question = input("Enter the Question: ")
+    question = input("enter your question")
     if question == "exit":
         break
-    answer = input("Enter the Answer: ")
+    answer = input("enter the answer")
+
 
 teacher_teacher = teacher(question, answer)
 teachers.append(teacher_teacher)
@@ -51,8 +51,6 @@ with open("teach.json", "w") as file:
     json.dump(sentences_data, file, indent = 4)
 """ new_subject = input(teacher("what is 48 + 56", "104"))
 sentences_data.append(new_subject.to_dict()) """
-with open("teach.json", "w") as file:
-    json.dump(sentences_data, file, indent = 4)
 
 
 class student:
@@ -72,8 +70,6 @@ class student:
 with open("teach.json", "r") as file:
     cards = open("./teach.json", encoding="utf8")   #stole from movie database
     flashcards = json.load(cards)
-
-
 
 
 
