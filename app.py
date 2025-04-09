@@ -16,21 +16,21 @@ class Car:
 my_car = Car("Toyota", "Camry", 2023, "camry_image.jpg")
 print(my_car.display_info())  # Output: 2023 Toyota Camry """
 
-
-import json
-import random
+    #def equation(self, subjects):
+        #self.subject.append(subjects)
+        #return(self.subject)
 """ try:
     with open("teach.json", "r") as file:
         sentences_data = json.load(file)
 except FileNotFoundError:
     sentences_data = [] """
+import json
+import random
+
 class teacher:
     def __init__(self, question, answer):
         self.question = question
         self.answer = answer
-    #def equation(self, subjects):
-        #self.subject.append(subjects)
-        #return(self.subject)
     def to_dict(self):
         return{"question": self.question, "answer": self.answer}
 
@@ -40,15 +40,14 @@ while True:
     if question == "exit":
         break
     answer = input("enter the answer")
-
-
-teacher_teacher = teacher(question, answer)
-teachers.append(teacher_teacher)
+    teacher_teacher = teacher(question, answer)
+    teachers.append(teacher_teacher)
 
 sentences_data = [teacher.to_dict() for teacher in teachers]
 random.shuffle(teachers) 
 with open("teach.json", "w") as file:
     json.dump(sentences_data, file, indent = 4)
+
 """ new_subject = input(teacher("what is 48 + 56", "104"))
 sentences_data.append(new_subject.to_dict()) """
 
@@ -73,7 +72,7 @@ with open("teach.json", "r") as file:
 
 
 
-""" Johnny = student("Johnny")
+Johnny = student("Johnny")
 for card in flashcards:
     question_list = input(f"question: {card['question']}")
     if question_list == card['answer']:
@@ -95,15 +94,15 @@ for card in flashcards:
                 Johnny.total_points()
         elif Johnny.current_streak in range(31, 51):
             for i in range(6):
-                Johnny.total_points() """
+                Johnny.total_points()
 
 
-"""     else:
+    else:
         print("incorrect, your streak has been reset")
         Johnny.i_streak()
         print(f"The answer was: {card['answer']}")
     print(f"Your current streak is {Johnny.current_streak}")
-    print(f"Your total points are {Johnny.points}") """
+    print(f"Your total points are {Johnny.points}")
 
 
 """ #LESSON ON CLASS
