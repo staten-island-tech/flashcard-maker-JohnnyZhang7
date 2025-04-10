@@ -34,22 +34,30 @@ class teacher:
     def to_dict(self):
         return{"question": self.question, "answer": self.answer}
 
-teachers = []
 while True:
     question = input("enter your question")
     if question == "exit":
         break
     answer = input("enter the answer")
-    teacher_teacher = teacher(question, answer)
-    teachers.append(teacher_teacher)
+    new_question = teacher(question, answer)
 
-sentences_data = [teacher.to_dict() for teacher in teachers]
-random.shuffle(teachers) 
-with open("teach.json", "w") as file:
-    json.dump(sentences_data, file, indent = 4)
+    try:
+        with open("teach.json", "r") as file:
+            teachers = json.load(file)
+    except FileNotFoundError:
+        teachers = []
 
-""" new_subject = input(teacher("what is 48 + 56", "104"))
-sentences_data.append(new_subject.to_dict()) """
+    teachers.append(new_question.to_dict())
+    random.shuffle(teachers) 
+    with open("teach.json", "w") as file:
+        json.dump(teachers, file, indent = 4)
+
+""" sentences_data = [teacher.to_dict() for teacher in teachers]
+teachers.append() """
+
+
+""" new_question = input(teacher("what is 48 + 56", "104"))
+teachers.append(new_question.to_dict()) """
 
 
 class student:

@@ -1,6 +1,14 @@
 [
     {
-        "question": "what is 40 / 8",
-        "answer": "5"
+        "question": "what is 30 / 3",
+        "answer": "10"
+    },
+    {
+        "question": "what is 10 x 2",
+        "answer": "20"
+    },
+    {
+        "question": "what is the capital city of france",
+        "answer": "paris"
     }
 ]
