@@ -79,7 +79,6 @@ with open("teach.json", "r") as file:
     flashcards = json.load(cards)
 
 
-
 Johnny = student("Johnny")
 for card in flashcards:
     question_list = input(f"question: {card['question']}")
